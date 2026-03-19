@@ -9,7 +9,7 @@ import { CreateUserResponseList } from './dtos/get_users.response.js';
 import { UpdateUserRequest } from './dtos/update_user.request.js';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(@Inject('USER_MODEL') private readonly userModel: Model<User>) {}
 
   async create(body: CreateUserRequest): Promise<CreateUserResponse> {
