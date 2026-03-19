@@ -4,7 +4,7 @@ import { JobStatus } from './dtos/status.enum';
 
 @Schema({ versionKey: false, timestamps: true })
 export class Job extends mongoose.Document {
-  @Prop({ type: mongoose.Schema.Types.ObjectId, isRequired: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, isRequired: true, ref: 'User' })
   userId: ObjectId;
 
   @Prop({ type: mongoose.Schema.Types.String, isRequired: true })

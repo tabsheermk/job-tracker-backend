@@ -34,7 +34,7 @@ export class JobService {
     const job = new this.jobModel(body);
     await job.save();
 
-    const { userId, ...createdJob } = job.toObject();
+    const { userId, isDeleted, ...createdJob } = job.toObject();
 
     return createdJob;
   }
