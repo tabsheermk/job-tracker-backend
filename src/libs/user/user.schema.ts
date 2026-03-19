@@ -23,7 +23,10 @@ export class User extends mongoose.Document {
   employmentStatus: boolean;
 
   @Prop({ type: mongoose.Schema.Types.Number, isRequired: true })
-  yoe: number;
+  yearsOfExperience: number;
+
+  @Prop({ type: mongoose.Schema.Types.Boolean, default: false })
+  isDeleted: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
