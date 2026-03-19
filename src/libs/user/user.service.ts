@@ -35,7 +35,7 @@ export class UserService {
     return createdUser;
   }
 
-  async get(query: GetUsersRequest): Promise<CreateUserResponseList> {
+  async findAll(query: GetUsersRequest): Promise<CreateUserResponseList> {
     let users: CreateUserResponse[];
     if (query.sendAll === 'true') {
       users = await this.userModel
@@ -53,7 +53,7 @@ export class UserService {
     return { data: users };
   }
 
-  async getUser(userId: string): Promise<CreateUserResponse> {
+  async findOne(userId: string): Promise<CreateUserResponse> {
     const user = await this.userModel
       .findOne({ _id: userId, isDeleted: { $ne: true } })
       .select('-password -isDeleted')

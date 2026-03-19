@@ -31,27 +31,25 @@ export class UserController {
   async getUsers(
     @Query() query: GetUsersRequest,
   ): Promise<CreateUserResponseList> {
-    return await this.userService.get(query);
+    return await this.userService.findAll(query);
   }
 
-  @Get(':userId')
-  async getUserById(
-    @Param('userId') userId: string,
-  ): Promise<CreateUserResponse> {
-    return await this.userService.getUser(userId);
+  @Get(':id')
+  async getUserById(@Param('id') userId: string): Promise<CreateUserResponse> {
+    return await this.userService.findOne(userId);
   }
 
-  @Patch(':userId')
+  @Patch(':id')
   async updateUser(
-    @Param('userId') userId: string,
+    @Param('id') userId: string,
     @Body() body: UpdateUserRequest,
   ): Promise<CreateUserResponse> {
     return await this.userService.update(userId, body);
   }
 
-  @Delete(':userId')
+  @Delete(':id')
   @HttpCode(204)
-  async deleteUser(@Param('userId') userId: string): Promise<void> {
+  async deleteUser(@Param('id') userId: string): Promise<void> {
     return await this.userService.delete(userId);
   }
 }
