@@ -1,11 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { type ObjectId } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { JobStatus } from './dtos/status.enum';
 
 @Schema({ versionKey: false, timestamps: true })
 export class Job extends mongoose.Document {
   @Prop({ type: mongoose.Schema.Types.ObjectId, isRequired: true, ref: 'User' })
-  userId: ObjectId;
+  userId: Types.ObjectId;
 
   @Prop({ type: mongoose.Schema.Types.String, isRequired: true })
   title: string;

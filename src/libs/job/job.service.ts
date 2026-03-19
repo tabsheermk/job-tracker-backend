@@ -110,7 +110,6 @@ export class JobService {
     await this.jobModel.findOneAndUpdate(
       { _id: jobId },
       { $set: { isDeleted: true } },
-      { new: true },
     );
   }
 }
